@@ -12,13 +12,11 @@ $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $method = $_SERVER['REQUEST_METHOD'];
 
 switch (true) {
-    // Просмотр одной заметки (GET /show?id=123)
     case str_contains($path, '/show'):
         $id = $_GET['id'] ?? null;
         $controller->show($id);
         break;
         
-    // Создание заметки
     case $path === '/create' && $method === 'GET':
         $controller->create(); // Показ формы
         break;
